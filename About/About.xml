@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ChangeStructuresAddon</Name>
+  <Author>Grilled_Salmon</Author>
+  <Version>0.2.2582.12315</Version>
+  <Description>WARNING: This mod will not work, unless you install Stationeers.Addon mod loader.
+Read how to install it here: https://github.com/Erdroy/Stationeers.Addons
+---
+
+An addon that allows editing of Structure tool and material requirements via XML.</Description>
+  <Tags />
+</ModMetadata>
