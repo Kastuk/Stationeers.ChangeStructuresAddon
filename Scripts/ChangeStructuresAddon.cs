@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ChangeStructuresAddon.Scripts
 {
-    public class UnofficialStationeersPatch : IPlugin
+    public class ChangeStructuresAddon : IPlugin
     {
         public void OnLoad()
         {
@@ -29,7 +29,7 @@ namespace ChangeStructuresAddon.Scripts
 				{
 					XmlSerializer xmlSerializer = new XmlSerializer(typeof(StructureEdits));
 
-					string xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/UnofficialStationeersPatch/GameData/StructureEdits.xml";
+					string xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/GameData/StructureEdits.xml";
 
 					if (!File.Exists(xmlPath))
 					{
