@@ -8,5 +8,6 @@ Read how to install it here: https://github.com/Erdroy/Stationeers.Addons
 ---
 
 An addon that allows editing of Structure tool and material requirements via XML.</Description>
+  <WorkshopHandle>2600483974</WorkshopHandle>
   <Tags />
 </ModMetadata>
