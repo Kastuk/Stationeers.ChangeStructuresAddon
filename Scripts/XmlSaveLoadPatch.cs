@@ -32,12 +32,12 @@ namespace ChangeStructuresAddon.Scripts
 				}
 
 				//Debug.Log("ChangeStructuresAddon: Reading StructureEdit for structure prefab:");
-				Debug.Log(edit.StructurePrefabName);
+				//Debug.Log(edit.StructurePrefabName);
 
 				if ((__result as Structure))
 				{
 					//Debug.Log("ChangeStructuresAddon: Found structure to edit:");
-					Debug.Log(edit.StructurePrefabName);
+					//Debug.Log(edit.StructurePrefabName);
 
 					foreach (BuildStateData buildStateData in edit.BuildStateDataList)
 					{
@@ -52,14 +52,14 @@ namespace ChangeStructuresAddon.Scripts
 							int newEntryQuantity2 = buildStateData.ToolUseData.EntryQuantity2;
 
 							//Debug.Log("ChangeStructuresAddon: Found buildstate:");
-							Debug.Log(editedBuildState);
+							//Debug.Log(editedBuildState);
 
 							//Debug.Log("ChangeStructuresAddon: XML buildstate:");
-							Debug.Log(newEntryTime);
-							Debug.Log(newToolEntryName);
-							Debug.Log(newToolEntry2Name);
-							Debug.Log(newEntryQuantity);
-							Debug.Log(newEntryQuantity2);
+							//Debug.Log(newEntryTime);
+							//Debug.Log(newToolEntryName);
+							//Debug.Log(newToolEntry2Name);
+							//Debug.Log(newEntryQuantity);
+							//Debug.Log(newEntryQuantity2);
 
 							if (newEntryTime != float.NaN)
 							{
