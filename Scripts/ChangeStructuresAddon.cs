@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Serialization;
+﻿using Assets.Scripts;
+using Assets.Scripts.Serialization;
 using Stationeers.Addons;
 using Stationeers.Addons.API;
 using System;
@@ -20,6 +21,8 @@ namespace ChangeStructuresAddon.Scripts
             Debug.Log("ChangeStructuresAddon: Unloaded");
         }
 
+		public static string WorkshopId = "2600483974";
+
 		private static StructureEdits _cachedStructureEdits;
 		public static StructureEdits CachedStructureEdits
 		{
@@ -29,7 +32,20 @@ namespace ChangeStructuresAddon.Scripts
 				{
 					XmlSerializer xmlSerializer = new XmlSerializer(typeof(StructureEdits));
 
-					string xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/GameData/StructureEdits.xml";
+					// Try workshop path for xml first
+					string xmlPath = GameManager.SteamAppPath + "/../../workshop/content/544550/" + WorkshopId + "/GameData/StructureEdits.xml";
+					// Try local mod path for xml
+					if (!File.Exists(xmlPath))
+						xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/GameData/StructureEdits.xml";
+					// Try local mod path with workshopId for xml
+					if (!File.Exists(xmlPath))
+						xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/" + WorkshopId + "/GameData/StructureEdits.xml";
+					// Try server mod path for xml
+					if (!File.Exists(xmlPath))
+						xmlPath = GameManager.SteamAppPath + "/mods/" + WorkshopId + "/GameData/StructureEdits.xml";
+					// Try local server mod path for xml
+					if (!File.Exists(xmlPath))
+						xmlPath = GameManager.SteamAppPath + "/mods/ChangeStructuresAddon/GameData/StructureEdits.xml";
 
 					if (!File.Exists(xmlPath))
 					{
@@ -38,11 +54,11 @@ namespace ChangeStructuresAddon.Scripts
 						return _cachedStructureEdits;
 					}
 
-					Debug.Log("ChangeStructuresAddon: Initialize Patch");
+					//Debug.Log("ChangeStructuresAddon: Initialize Patch");
 					Debug.Log("ChangeStructuresAddon: Loading StructureEdits.xml");
 					_cachedStructureEdits = XmlSerialization.Deserialize(xmlSerializer, xmlPath) as StructureEdits;
 					Debug.Log("ChangeStructuresAddon: Loaded StructureEdits.xml");
-					Debug.Log(_cachedStructureEdits);
+					//Debug.Log(_cachedStructureEdits);
 					return _cachedStructureEdits;
 				}
 				else

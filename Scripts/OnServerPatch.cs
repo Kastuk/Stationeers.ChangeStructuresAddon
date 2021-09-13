@@ -29,33 +29,33 @@ namespace ChangeStructuresAddon.Scripts
 		[HarmonyPostfix]
 		public static void CreatePostfix (Structure __result, CreateStructureInstance instance)
 		{
-			Debug.Log("ChangeStructuresAddon: Reading StructureEditList:");
+			//Debug.Log("ChangeStructuresAddon: Reading StructureEditList:");
 			StructureEdits edits = ChangeStructuresAddon.CachedStructureEdits;
 
 			if (edits == null)
 			{
-				Debug.Log("ChangeStructuresAddon: ERROR: StructureEdits objects in XML is null");
+				//Debug.Log("ChangeStructuresAddon: ERROR: StructureEdits objects in XML is null");
 				return;
 			}
 
-			Debug.Log(edits.StructureEditList);
-			Debug.Log("ChangeStructuresAddon: Read StructureEditList:");
+			//Debug.Log(edits.StructureEditList);
+			//Debug.Log("ChangeStructuresAddon: Read StructureEditList:");
 
 			if (__result == null)
 				return;
 
-			Debug.Log("ChangeStructuresAddon: created found");
+			//Debug.Log("ChangeStructuresAddon: created found");
 			int editIdx = edits.StructureEditList.FindIndex(x => x.StructurePrefabName == __result.PrefabName);
-			Debug.Log("ChangeStructuresAddon: created found");
-			Debug.Log(editIdx);
-			Debug.Log("ChangeStructuresAddon: edit");
+			//Debug.Log("ChangeStructuresAddon: created found");
+			//Debug.Log(editIdx);
+			//Debug.Log("ChangeStructuresAddon: edit");
 
 			if (editIdx != -1)
 			{
 				StructureEdit edit = edits.StructureEditList[editIdx];
 
-				Debug.Log("ChangeStructuresAddon: Found structure to edit:");
-				Debug.Log(edit.StructurePrefabName);
+				//Debug.Log("ChangeStructuresAddon: Found structure to edit:");
+				//Debug.Log(edit.StructurePrefabName);
 
 				foreach (BuildStateData buildStateData in edit.BuildStateDataList)
 				{
@@ -69,48 +69,48 @@ namespace ChangeStructuresAddon.Scripts
 						int newEntryQuantity = buildStateData.ToolUseData.EntryQuantity;
 						int newEntryQuantity2 = buildStateData.ToolUseData.EntryQuantity2;
 
-						Debug.Log("ChangeStructuresAddon: Found buildstate:");
-						Debug.Log(editedBuildState);
+						//Debug.Log("ChangeStructuresAddon: Found buildstate:");
+						//Debug.Log(editedBuildState);
 
-						Debug.Log("ChangeStructuresAddon: XML buildstate:");
-						Debug.Log(newEntryTime);
-						Debug.Log(newToolEntryName);
-						Debug.Log(newToolEntry2Name);
-						Debug.Log(newEntryQuantity);
-						Debug.Log(newEntryQuantity2);
+						//Debug.Log("ChangeStructuresAddon: XML buildstate:");
+						//Debug.Log(newEntryTime);
+						//Debug.Log(newToolEntryName);
+						//Debug.Log(newToolEntry2Name);
+						//Debug.Log(newEntryQuantity);
+						//Debug.Log(newEntryQuantity2);
 
 						if (newEntryTime != float.NaN)
 						{
-							Debug.Log("ChangeStructuresAddon: Changed EntryTime from " + editedBuildState.Tool.EntryTime + " to " + newEntryTime);
+							//Debug.Log("ChangeStructuresAddon: Changed EntryTime from " + editedBuildState.Tool.EntryTime + " to " + newEntryTime);
 							editedBuildState.Tool.EntryTime = newEntryTime;
 						}
 						if (newToolEntryName != "")
 						{
 							Item newItem = Item.FindPrefab(newToolEntryName) as Item;
-							Debug.Log("ChangeStructuresAddon: Changed ToolEntry " + editedBuildState.Tool.ToolEntry + " to " + newItem);
+							//Debug.Log("ChangeStructuresAddon: Changed ToolEntry " + editedBuildState.Tool.ToolEntry + " to " + newItem);
 							editedBuildState.Tool.ToolEntry = newItem;
 						}
 						if (newToolEntry2Name != "")
 						{
 							Item newItem = Item.FindPrefab(newToolEntry2Name) as Item;
-							Debug.Log("ChangeStructuresAddon: Changed ToolEntry2 " + editedBuildState.Tool.ToolEntry2 + " to " + newItem);
+							//Debug.Log("ChangeStructuresAddon: Changed ToolEntry2 " + editedBuildState.Tool.ToolEntry2 + " to " + newItem);
 							editedBuildState.Tool.ToolEntry2 = newItem;
 						}
 						if (newEntryQuantity != -1)
 						{
-							Debug.Log("ChangeStructuresAddon: Changed EntryQuantity " + editedBuildState.Tool.EntryQuantity + " to " + newEntryQuantity);
+							//Debug.Log("ChangeStructuresAddon: Changed EntryQuantity " + editedBuildState.Tool.EntryQuantity + " to " + newEntryQuantity);
 							editedBuildState.Tool.EntryQuantity = newEntryQuantity;
 						}
 						if (newEntryQuantity2 != -1)
 						{
-							Debug.Log("ChangeStructuresAddon: Changed EntryQuantity2 " + editedBuildState.Tool.EntryQuantity2 + " to " + newEntryQuantity2);
+							//Debug.Log("ChangeStructuresAddon: Changed EntryQuantity2 " + editedBuildState.Tool.EntryQuantity2 + " to " + newEntryQuantity2);
 							editedBuildState.Tool.EntryQuantity2 = newEntryQuantity2;
 						}
 					}
 
 					__result.BuildStates[stateIdx] = editedBuildState;
 					//(InventoryManager.PrecisionPlaceCursor).BuildStates[stateIdx] = editedBuildState;
-					Debug.Log("ChangeStructuresAddon: Edited created " + edit.StructurePrefabName);
+					//Debug.Log("ChangeStructuresAddon: Edited created " + edit.StructurePrefabName);
 				}
 			}
 		}
