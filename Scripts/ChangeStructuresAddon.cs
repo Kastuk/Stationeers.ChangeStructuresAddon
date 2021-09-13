@@ -55,9 +55,12 @@ namespace ChangeStructuresAddon.Scripts
 					}
 
 					//Debug.Log("ChangeStructuresAddon: Initialize Patch");
-					Debug.Log("ChangeStructuresAddon: Loading StructureEdits.xml");
+					Debug.Log("ChangeStructuresAddon: Loading " + xmlPath);
 					_cachedStructureEdits = XmlSerialization.Deserialize(xmlSerializer, xmlPath) as StructureEdits;
-					Debug.Log("ChangeStructuresAddon: Loaded StructureEdits.xml");
+
+					if (_cachedStructureEdits != null)
+						Debug.Log("ChangeStructuresAddon: Loaded " + xmlPath);
+
 					//Debug.Log(_cachedStructureEdits);
 					return _cachedStructureEdits;
 				}
