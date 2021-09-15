@@ -2,12 +2,25 @@
 <ModMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>ChangeStructuresAddon</Name>
   <Author>Grilled_Salmon</Author>
-  <Version>0.2.2582.12315_0.2</Version>
+  <Version>0.2.2933.14938_v0.7</Version>
   <Description>WARNING: This mod will not work, unless you install Stationeers.Addon mod loader.
 Read how to install it here: https://github.com/Erdroy/Stationeers.Addons
 ---
 
-An addon that allows editing of Structure tool and material requirements via XML.</Description>
+An addon that allows editing of Structure tool and material requirements via XML.
+
+The default path for the XML file is below:
+Documents\My Games\Stationeers\mods\ChangeStructuresAddon\Content\StructureEdits.xml
+
+An example XML file can be found in the workshop item folder at the following path:
+<steam_install>\steamapps\workshop\content\544550\2600483974\Content\StructureEdits.xml
+
+
+NOTE: Upgrading of edited structures is limited to hosts in multiplayer, though other players can place the structure down and have the host upgrade it.
+
+Source:
+https://github.com/grilled-salmon/Stationeers.ChangeStructuresAddon
+</Description>
   <WorkshopHandle>2600483974</WorkshopHandle>
   <Tags />
 </ModMetadata>

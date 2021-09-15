@@ -32,30 +32,40 @@ namespace ChangeStructuresAddon.Scripts
 				{
 					XmlSerializer xmlSerializer = new XmlSerializer(typeof(StructureEdits));
 
-					// Try workshop path for xml first
-					string xmlPath = GameManager.SteamAppPath + "/../../workshop/content/544550/" + WorkshopId + "/GameData/StructureEdits.xml";
-					// Try local mod path for xml
-					if (!File.Exists(xmlPath))
-						xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/GameData/StructureEdits.xml";
-					// Try local mod path with workshopId for xml
-					if (!File.Exists(xmlPath))
-						xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/" + WorkshopId + "/GameData/StructureEdits.xml";
-					// Try server mod path for xml
-					if (!File.Exists(xmlPath))
-						xmlPath = GameManager.SteamAppPath + "/mods/" + WorkshopId + "/GameData/StructureEdits.xml";
-					// Try local server mod path for xml
-					if (!File.Exists(xmlPath))
-						xmlPath = GameManager.SteamAppPath + "/mods/ChangeStructuresAddon/GameData/StructureEdits.xml";
+					// Try normal path for XML
+					string xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/Content/StructureEdits.xml";
 
 					if (!File.Exists(xmlPath))
 					{
-						Debug.Log("ChangeStructuresAddon: ERROR: StructureEdits.xml not found");
-						_cachedStructureEdits = new StructureEdits();
-						return _cachedStructureEdits;
+						Debug.Log("ChangeStructuresAddon: WARN: StructureEdits.xml not found; creating template");
+						Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/Content/");
+						xmlPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Stationeers/mods/ChangeStructuresAddon/Content/StructureEdits.xml";
+
+						StructureEdits newEdits = new StructureEdits();
+
+						ToolUseData toolData = new ToolUseData();
+						toolData.EntryTime = 1f;
+						toolData.ToolEntryPrefabName = "ItemWeldingTorch";
+						toolData.ToolEntry2PrefabName = "ItemPlasticSheets";
+						toolData.EntryQuantity = 0;
+						toolData.EntryQuantity2 = 4;
+
+						BuildStateData buildData = new BuildStateData();
+						buildData.State = 1;
+						buildData.ToolUseData = toolData;
+
+						StructureEdit edit = new StructureEdit();
+						edit.StructurePrefabName = "StructureInteriorDoorTriangle";
+						edit.BuildStateDataList.Add(buildData);
+
+						newEdits.StructureEditList.Add(edit);
+
+						XmlSerialization.Serialization(xmlSerializer, newEdits, xmlPath);
 					}
 
 					//Debug.Log("ChangeStructuresAddon: Initialize Patch");
 					Debug.Log("ChangeStructuresAddon: Loading " + xmlPath);
+
 					_cachedStructureEdits = XmlSerialization.Deserialize(xmlSerializer, xmlPath) as StructureEdits;
 
 					if (_cachedStructureEdits != null)

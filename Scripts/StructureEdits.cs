@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace ChangeStructuresAddon.Scripts
 {
-    [XmlRoot]
+    [XmlRoot(ElementName = "StructureEdits")]
     public class StructureEdits
     {
         [XmlArray("StructureEditList"), XmlArrayItem(typeof(StructureEdit), ElementName = "StructureEdit")]
