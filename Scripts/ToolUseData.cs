@@ -26,5 +26,16 @@ namespace ChangeStructuresAddon.Scripts
 		[XmlElement("EntryQuantity2")]
 		public int EntryQuantity2 = -1;
 
+        //DECONSTRUCTION!
+
+        [XmlElement("ExitTime")]
+		public float ExitTime = float.NaN;
+		
+        [XmlElement("ToolExitPrefabName")]
+		public string ToolExitPrefabName = "";
+
+		[XmlElement("ExitQuantity")]
+		public int ExitQuantity = -1;
+
 	}
 }

@@ -69,15 +69,23 @@ namespace ChangeStructuresAddon.Scripts
 						int newEntryQuantity = buildStateData.ToolUseData.EntryQuantity;
 						int newEntryQuantity2 = buildStateData.ToolUseData.EntryQuantity2;
 
-						//Debug.Log("ChangeStructuresAddon: Found buildstate:");
-						//Debug.Log(editedBuildState);
+						//DECONSTRUCTION!
+                        float newExitTime = buildStateData.ToolUseData.ExitTime;
+                        string newToolExitName = buildStateData.ToolUseData.ToolExitPrefabName;
+                        int newExitQuantity = buildStateData.ToolUseData.ExitQuantity;
 
-						//Debug.Log("ChangeStructuresAddon: XML buildstate:");
+						Debug.Log("ChangeStructuresAddon: Found buildstate:");
+						Debug.Log(editedBuildState);
+
+						Debug.Log("ChangeStructuresAddon: XML buildstate:");
 						//Debug.Log(newEntryTime);
 						//Debug.Log(newToolEntryName);
 						//Debug.Log(newToolEntry2Name);
 						//Debug.Log(newEntryQuantity);
 						//Debug.Log(newEntryQuantity2);
+                        Debug.Log(newExitTime);
+                        Debug.Log(newToolExitName);
+                        Debug.Log(newExitQuantity);
 
 						if (newEntryTime != float.NaN)
 						{
@@ -105,6 +113,24 @@ namespace ChangeStructuresAddon.Scripts
 						{
 							//Debug.Log("ChangeStructuresAddon: Changed EntryQuantity2 " + editedBuildState.Tool.EntryQuantity2 + " to " + newEntryQuantity2);
 							editedBuildState.Tool.EntryQuantity2 = newEntryQuantity2;
+						}
+
+                        //DECONSTRUCTION!
+                        if (newExitTime != float.NaN)
+						{
+							Debug.Log("ChangeStructuresAddon: Changed ExitTime from " + editedBuildState.Tool.ExitTime + " to " + newExitTime);
+							editedBuildState.Tool.ExitTime = newExitTime;
+						}
+						if (newToolExitName != "")
+						{
+							Item newItem = Item.FindPrefab(newToolExitName) as Item;
+							Debug.Log("ChangeStructuresAddon: Changed ToolExit " + editedBuildState.Tool.ToolExit + " to " + newItem);
+							editedBuildState.Tool.ToolExit = newItem;
+						}
+						if (newExitQuantity != -1)
+						{
+							Debug.Log("ChangeStructuresAddon: Changed ExitQuantity " + editedBuildState.Tool.ExitQuantity + " to " + newExitQuantity);
+							editedBuildState.Tool.ExitQuantity = newExitQuantity;
 						}
 					}
 

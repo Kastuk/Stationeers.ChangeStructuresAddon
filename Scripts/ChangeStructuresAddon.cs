@@ -21,7 +21,7 @@ namespace ChangeStructuresAddon.Scripts
             Debug.Log("ChangeStructuresAddon: Unloaded");
         }
 
-		public static string WorkshopId = "2600483974";
+		//public static string WorkshopId = "2600483974"; // I don't know what is for and how to preserve copyright.
 
 		private static StructureEdits _cachedStructureEdits;
 		public static StructureEdits CachedStructureEdits
@@ -49,6 +49,10 @@ namespace ChangeStructuresAddon.Scripts
 						toolData.ToolEntry2PrefabName = "ItemPlasticSheets";
 						toolData.EntryQuantity = 0;
 						toolData.EntryQuantity2 = 4;
+                        //DECONSTRUCTION!
+                        toolData.ExitTime = 1f;
+                        toolData.ToolExitPrefabName = "ItemAngleGrinder";
+                        toolData.ExitQuantity = 0;
 
 						BuildStateData buildData = new BuildStateData();
 						buildData.State = 1;

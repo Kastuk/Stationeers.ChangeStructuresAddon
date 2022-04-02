@@ -12,6 +12,9 @@
             <EntryQuantity>0</EntryQuantity>
             <ToolEntry2PrefabName>ItemPlasticSheets</ToolEntry2PrefabName>
             <EntryQuantity2>4</EntryQuantity2>
+            <ExitTime>1</ExitTime>
+            <ToolExitPrefabName>ItemAngleGrinder</ToolExitPrefabName>
+            <ExitQuantity>0</ExitQuantity>
           </ToolUseData>
         </BuildStateData>
       </BuildStateDataList>
