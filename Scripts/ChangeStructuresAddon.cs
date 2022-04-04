@@ -21,7 +21,7 @@ namespace ChangeStructuresAddon.Scripts
             Debug.Log("ChangeStructuresAddon: Unloaded");
         }
 
-		//public static string WorkshopId = "2600483974"; // I don't know what is for and how to preserve copyright.
+		public static string WorkshopId = "2600483974"; // I don't know what is for and how to preserve copyright.
 
 		private static StructureEdits _cachedStructureEdits;
 		public static StructureEdits CachedStructureEdits
